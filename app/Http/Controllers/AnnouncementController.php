@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Announcement;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -14,7 +14,7 @@ class AnnouncementController extends Controller
      */
     public function index()
     {
-        $announcements = Announcement::all();
+        $announcements = Product::all();
         return view('announcements', ['announcements'=> $announcements]);
     }
 
@@ -36,7 +36,7 @@ class AnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        $newAnnonucement = new Announcement();
+        $newAnnonucement = new Product();
         $newAnnonucement->title = $request['title'];
         $newAnnonucement->description = $request['description'];
         $newAnnonucement->provide = $request['provide'];
@@ -53,7 +53,7 @@ class AnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Announcement $announcement)
+    public function show(Product $announcement)
     {
         return view('announcement', ['announcement' => $announcement]);
 
@@ -77,7 +77,7 @@ class AnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Announcement $announcement)
+    public function update(Request $request, Product $announcement)
     {
         $announcement->title = $request['title'];
         $announcement->description = $request['description'];
@@ -95,7 +95,7 @@ class AnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Announcement $announcement)
+    public function destroy(Product $announcement)
     {
         return $announcement->deleteOrFail();
     }

@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Announcement;
+use App\Models\Product;
 use App\Models\Article;
 use App\Models\CategoryAnnouncement;
-use App\Models\CategoryArticles;
+use App\Models\CategoryProducts;
 use App\Models\CommentaryArticle;
 use App\Models\CommentaryProvider;
 use App\Models\Customer;
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Bonne méthode
-        $categoryArticles = CategoryArticles::factory(5)
+        $categoryArticles = CategoryProducts::factory(5)
             ->hasArticle(10)
             ->create();
 
@@ -40,7 +40,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $categoryAnnouncement = CategoryAnnouncement::factory()
-            ->has(Announcement::factory()
+            ->has(Product::factory()
                 ->count(10))
             ->count(10)
             ->create();
@@ -71,7 +71,7 @@ class DatabaseSeeder extends Seeder
             ->create();
 
         $categoryArticle = CategoryAnnouncement::factory()
-            ->has(Announcement::factory()
+            ->has(Product::factory()
                 ->count(50)
                 ->has(AnnouncementSave::factory()
                     ->count(20),

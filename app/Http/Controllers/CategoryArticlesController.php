@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryArticles;
+use App\Models\CategoryProducts;
 use Illuminate\Http\Request;
 
 class CategoryArticlesController extends Controller
@@ -14,7 +14,7 @@ class CategoryArticlesController extends Controller
      */
     public function index()
     {
-        $CategoryArticles = CategoryArticles::all();
+        $CategoryArticles = CategoryProducts::all();
         return view('categoryArticles', ['categoryArticles' => $CategoryArticles]);
 
     }
@@ -37,7 +37,7 @@ class CategoryArticlesController extends Controller
      */
     public function store(Request $request)
     {
-        $newCategoryArticles = new CategoryArticles();
+        $newCategoryArticles = new CategoryProducts();
         $newCategoryArticles->name = $request['name'];
         $newCategoryArticles->type = $request['type'];
         return $newCategoryArticles->saveOrFail();
@@ -49,7 +49,7 @@ class CategoryArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryArticles $categoryArticles)
+    public function show(CategoryProducts $categoryArticles)
     {
 
         return view('articles', ['articles' => $categoryArticles]);
@@ -73,7 +73,7 @@ class CategoryArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryArticles $categoryArticles)
+    public function update(Request $request, CategoryProducts $categoryArticles)
     {
         $categoryArticles->name = $request['name'];
         $categoryArticles->type = $request['type'];
@@ -86,7 +86,7 @@ class CategoryArticlesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryArticles $categoryArticles)
+    public function destroy(CategoryProducts $categoryArticles)
     {
         return $categoryArticles->deleteOrFail();
     }

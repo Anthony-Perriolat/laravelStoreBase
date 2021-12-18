@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\CategoryAnnouncement;
-use App\Models\CategoryArticles;
+use App\Models\CategoryProducts;
 use App\Models\ServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -20,7 +20,7 @@ class Controller extends BaseController
 
     public function home()
     {
-        $categoryArticles = CategoryArticles::all();
+        $categoryArticles = CategoryProducts::all();
         $categoryAnnouncement = CategoryAnnouncement::all();
         $allProfile = User::with('ServiceProvider')->get();
         return view('home', ['categoryArticles' => $categoryArticles, 'categoryAnnouncement' => $categoryAnnouncement, 'allProfile' => $allProfile]);

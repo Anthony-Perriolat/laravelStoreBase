@@ -26,6 +26,6 @@ class ServiceProvider extends Model
 
     public function announcement()
     {
-        return $this->hasMany(Announcement::class);
+        return $this->hasMany(Product::class);
     }
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CategoryAnnouncement;
+use App\Models\CategoryProduct;
+use App\Models\CategoryProducts;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
-class CategoryAnnouncementController extends Controller
+class CategoryProductsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +16,8 @@ class CategoryAnnouncementController extends Controller
      */
     public function index()
     {
-        $categoryAnnouncement = CategoryAnnouncement::all();
-        return view('categoryAnnouncement', ['categoryAnnouncement'=> $categoryAnnouncement]);
+        $categoryProducts = CategoryProducts::all();
+        return view('categoryProducts', ['categoryProducts'=> $categoryProducts]);
     }
 
 //    /**
@@ -36,10 +38,10 @@ class CategoryAnnouncementController extends Controller
      */
     public function store(Request $request)
     {
-        $newCategoryAnnouncement = new CategoryAnnouncement();
-        $newCategoryAnnouncement->name = $request['name'];
-        $newCategoryAnnouncement->type = $request['type'];
-        return $newCategoryAnnouncement;
+        $newCategoryProduct = new CategoryProducts();
+        $newCategoryProduct->name = $request['name'];
+        $newCategoryProduct->type = $request['type'];
+        return $newCategoryProduct;
     }
 
     /**
@@ -48,10 +50,10 @@ class CategoryAnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(CategoryAnnouncement $categoryAnnouncement)
+    public function show(CategoryProducts $categoryProduct)
     {
-        $announcements = $categoryAnnouncement->announcement;
-        return view('announcements', ['categoryAnnouncement' => $categoryAnnouncement, 'announcements' => $announcements]);
+        $Products = $categoryProduct->Product;
+        return view('Products', ['categoryProduct' => $categoryProduct, 'Products' => $Products]);
     }
 
 //    /**
@@ -72,12 +74,12 @@ class CategoryAnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CategoryAnnouncement $categoryAnnouncement)
+    public function update(Request $request, CategoryProducts $categoryProduct)
     {
-        $categoryAnnouncement['name'] = $request->name;
-        $categoryAnnouncement['type'] = $request->type;
-        $categoryAnnouncement->updateOrFail();
-        return $categoryAnnouncement;
+        $categoryProduct['name'] = $request->name;
+        $categoryProduct['type'] = $request->type;
+        $categoryProduct->updateOrFail();
+        return $categoryProduct;
     }
 
     /**
@@ -86,8 +88,13 @@ class CategoryAnnouncementController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CategoryAnnouncement $categoryAnnouncement)
+    public function destroy(CategoryProducts $categoryProduct)
     {
-        return $categoryAnnouncement->deleteOrFail();
+        return $categoryProduct->deleteOrFail();
+    }
+
+    public function aCategoryReturnAllProducts()
+    {
+        return CategoryProducts::with('Product')->get();
     }
 }

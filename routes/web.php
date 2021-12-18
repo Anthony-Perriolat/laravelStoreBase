@@ -3,7 +3,7 @@
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\AnnouncementSaveController;
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\CategoryAnnouncementController;
+use App\Http\Controllers\CategoryProductsController;
 use App\Http\Controllers\CategoryArticlesController;
 use App\Http\Controllers\CommentaryArticleController;
 use App\Http\Controllers\CommentaryProviderController;
@@ -35,7 +35,7 @@ Route::resource('serviceProvider', ServiceProviderController::class);
 Route::resource('categoryArticles', CategoryArticlesController::class);
 Route::resource('article', ArticleController::class);
 Route::resource('commentArticle', CommentaryArticleController::class);
-Route::resource('categoryAnnouncement', CategoryAnnouncementController::class);
+Route::resource('categoryAnnouncement', CategoryProductsController::class);
 Route::resource('announcement', AnnouncementController::class);
 //Route::resource('announcement.announcementSave', AnnouncementSaveController::class)->shallow(); prochainement
 Route::resource('experience', ExperienceController::class);

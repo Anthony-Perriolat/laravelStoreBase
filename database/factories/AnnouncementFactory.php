@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\Announcement;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;use Illuminate\Support\Str;use phpDocumentor\Reflection\Types\Integer;
 
 class AnnouncementFactory extends Factory
@@ -12,7 +12,7 @@ class AnnouncementFactory extends Factory
      *
      * @var string
      */
-    protected $model = Announcement::class;
+    protected $model = Product::class;
 
     /**
      * Define the model's default state.

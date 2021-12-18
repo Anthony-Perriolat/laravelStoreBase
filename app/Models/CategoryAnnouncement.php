@@ -11,6 +11,6 @@ class CategoryAnnouncement extends Model
 
     public function announcement()
     {
-        return $this->hasMany(Announcement::class);
+        return $this->hasMany(Product::class);
     }
 }
